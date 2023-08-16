@@ -38,3 +38,61 @@ Insert Into Course(CourseID,Name , ContactHours, InstructorID)VALUES
 
 Insert into take (studentID, CourseID ,Grade)VALUES
 (1,3,'D');
+sois@sois-VirtualBox:~$ jps
+3106 SecondaryNameNode
+3412 ResourceManager
+3573 NodeManager
+2730 NameNode
+2892 DataNode
+25100 Jps
+sois@sois-VirtualBox:~$ hdfs dfs -mkdir /user/test_dir
+mkdir: `/user/test_dir': File exists
+sois@sois-VirtualBox:~$ hdfs dfs -ls /user/
+Found 2 items
+drwxr-xr-x   - sois supergroup          0 2021-01-15 16:26 /user/hive
+drwxr-xr-x   - sois supergroup          0 2023-08-16 15:21 /user/test_dir
+sois@sois-VirtualBox:~$ gedit lab2.txt
+sois@sois-VirtualBox:~$ hdfs dfs -put lab2.txt /user/test_dir
+put: `/user/test_dir/lab2.txt': File exists
+sois@sois-VirtualBox:~$ hdfs dfs -ls /user/
+Found 2 items
+drwxr-xr-x   - sois supergroup          0 2021-01-15 16:26 /user/hive
+drwxr-xr-x   - sois supergroup          0 2023-08-16 15:21 /user/test_dir
+sois@sois-VirtualBox:~$ hdfs dfs -ls /user/test_dir
+Found 3 items
+-rw-r--r--   1 sois supergroup          9 2023-08-16 15:21 /user/test_dir/lab2.txt
+-rw-r--r--   1 sois supergroup          9 2023-08-16 14:58 /user/test_dir/labdemo1.txt
+-rw-r--r--   1 sois supergroup          0 2023-08-16 15:08 /user/test_dir/labdemo2.txt
+sois@sois-VirtualBox:~$ gedit t1.txt
+sois@sois-VirtualBox:~$ gedit t2.txt
+sois@sois-VirtualBox:~$ hdfs dfs -put t1.txt t2.txt /user/test_dir
+2023-08-16 15:35:25,668 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2023-08-16 15:35:26,268 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+sois@sois-VirtualBox:~$ hdfs dfs -cat /user/test_dir/lab2.txt
+2023-08-16 15:36:11,014 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+jkfaff;k
+sois@sois-VirtualBox:~$ hdfs dfs -cat /user/test_dir/lab2.txt
+2023-08-16 15:36:49,299 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+jkfaff;k
+sois@sois-VirtualBox:~$ hdfs dfs -cat /user/test_dir/t1.txt
+2023-08-16 15:37:06,131 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hriug
+sois@sois-VirtualBox:~$ hdfs dfs -cat /user/test_dir/t2.txt
+2023-08-16 15:37:30,805 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+jeeru
+sois@sois-VirtualBox:~$ hdfs dfs -cat /user/test_dir/lab2.txt
+2023-08-16 15:38:53,430 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+jkfaff;k
+sois@sois-VirtualBox:~$ hdfs dfs -get /user/test_dir/lab2.txt /home/sois/Desktop/
+2023-08-16 15:40:58,867 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+sois@sois-VirtualBox:~$ hdfs dfs -cp /user/test_dir/lab2.txt /user test_dir/updatedlab2.txt
+cp: `test_dir/updatedlab2.txt': No such file or directory
+sois@sois-VirtualBox:~$ hdfs dfs -cp /user/test_dir/lab2.txt /user/test_dir/updatedlab2.txt
+2023-08-16 15:42:59,459 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2023-08-16 15:42:59,765 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+sois@sois-VirtualBox:~$ hdfs dfs -rm /user/tst_dir/lab2.txt
+rm: `/user/tst_dir/lab2.txt': No such file or directory
+sois@sois-VirtualBox:~$ hdfs dfs -rm /user/test_dir/lab2.txt
+Deleted /user/test_dir/lab2.txt
+sois@sois-VirtualBox:~$ 
+
