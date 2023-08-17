@@ -38,14 +38,5 @@ Insert Into Course(CourseID,Name , ContactHours, InstructorID)VALUES
 
 Insert into take (studentID, CourseID ,Grade)VALUES
 (1,3,'D');
-sois@sois-VirtualBox:~$ jps
-3106 SecondaryNameNode
-3412 ResourceManager
-3573 NodeManager
-2730 NameNode
-2892 DataNode
-25100 Jps
-sois@sois-VirtualBox:~$ hdfs dfs -mkdir /user/test_dir
-mkdir: `/user/test_dir': File exists
 
 
